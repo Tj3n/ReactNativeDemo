@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import EmojiDict from './app/Emoji';
+import EmojiDict from './app/3/Emoji';
 import {  } from './app/1/ObjectMutation.js';
 import {  } from './app/1/Object.js';
 import {  } from './app/1/Function.js';
