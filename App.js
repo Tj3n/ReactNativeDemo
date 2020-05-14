@@ -12,6 +12,7 @@ import Contacts from './app/4.2/Contacts'
 import ContactsValidated from './app/5/Contacts'
 import ContactsNavigation from './app/6/ContactApp'
 import AppNavigator from './app/6.1/NavigationExample'
+import ContactsViaAPI from './app/7/ContactApp'
 
 import 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -26,6 +27,7 @@ export default class App extends Component {
 		// return <WorkTimer />;
 		// return <ContactsNavigation />;
 		// return <AppNavigator />;
-		return <ContactsNavigation />;
+		// return <ContactsNavigation />;
+		return <ContactsViaAPI />;
 	}
 }
