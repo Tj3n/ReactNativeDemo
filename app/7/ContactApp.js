@@ -65,6 +65,7 @@ class ContactApp extends Component {
   getUsers = async () => {
     const results = await fetchUsers()
     this.setState({contacts: results})
+    return results
   }
 
   addContact = newContact => {
@@ -87,7 +88,7 @@ class ContactApp extends Component {
 
       // Witch Stack
       <ContactContext.Provider
-        value={{contacts: this.state.contacts, addContact: this.addContact}}>
+        value={{contacts: this.state.contacts, addContact: this.addContact, refreshContacts: this.getUsers}}>
         <MainStackNavigator.Navigator
           screenOptions={{
             headerShown: true,

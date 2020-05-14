@@ -11,7 +11,7 @@ export default class ContactListScreen extends Component {
     headerRight: () => (
       <Button
         title="Add"
-        color='#a41034'
+        color="#a41034"
         onPress={() => {
           navigation.navigate('AddContact');
         }}
@@ -21,6 +21,7 @@ export default class ContactListScreen extends Component {
 
   state = {
     showContacts: true,
+    isRefreshing: false,
   };
 
   toggleContacts = () => {
@@ -29,6 +30,13 @@ export default class ContactListScreen extends Component {
 
   showForm = () => {
     this.props.navigation.navigate('AddContact');
+  };
+
+  refreshContacts = () => {
+    this.setState({isRefreshing: true});
+    this.context
+      .refreshContacts()
+      .then(() => this.setState({isRefreshing: false}));
   };
 
   //Render with Sections
@@ -47,6 +55,8 @@ export default class ContactListScreen extends Component {
                 contact: contact,
               });
             }}
+            onRefresh={this.refreshContacts}
+            isRefreshing={this.state.isRefreshing}
           />
         )}
       </View>

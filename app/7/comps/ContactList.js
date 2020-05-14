@@ -31,7 +31,7 @@ const ContactList = props => {
       renderSectionHeader={renderSectionHeader}
       sections={sections}
       refreshControl={
-        <RefreshControl refreshing={false} onRefresh />
+        <RefreshControl refreshing={props.isRefreshing} onRefresh={props.onRefresh} />
       }
     />
   );
@@ -39,6 +39,8 @@ const ContactList = props => {
 
 ContactList.propTypes = {
   contacts: PropTypes.array,
+  onRefresh: PropTypes.func,
+  isRefreshing: PropTypes.bool,
 };
 
 export default ContactList;
