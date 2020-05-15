@@ -13,6 +13,11 @@ import ContactsValidated from './app/5/Contacts'
 import ContactsNavigation from './app/6/ContactApp'
 import AppNavigator from './app/6.1/NavigationExample'
 import ContactsViaAPI from './app/7/ContactApp'
+import MapApp from './app/8/MapApp'
+import PickContactApp from './app/8/PickContactApp'
+import CompassApp from './app/8/CompassApp'
+import VideoApp from './app/8/VideoApp'
+import PhotoEditorApp from './app/8/PhotoEditorApp'
 
 import 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -28,6 +33,11 @@ export default class App extends Component {
 		// return <ContactsNavigation />;
 		// return <AppNavigator />;
 		// return <ContactsNavigation />;
-		return <ContactsViaAPI />;
+		// return <ContactsViaAPI />;
+		// return <MapApp />
+		// return <PickContactApp />
+		// return <CompassApp />
+		// return <VideoApp />
+		return <PhotoEditorApp />
 	}
 }
