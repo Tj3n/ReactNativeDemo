@@ -18,9 +18,10 @@ import PickContactApp from './app/8/PickContactApp';
 import CompassApp from './app/8/CompassApp';
 import VideoApp from './app/8/VideoApp';
 import PhotoEditorApp from './app/8/PhotoEditorApp';
-import {} from './app/9/Redux.js';
+// import {} from './app/9/Redux.js'; //Name conflict
 import ContactRedux from './app/9.1/ContactApp';
-// import {} from './app/9.1/redux/Store.js'
+import {} from './app/10/Redux.js';
+import ContactReduxAsync from './app/10.1/ContactApp'
 
 import 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -85,6 +86,10 @@ const screens = [
   {
     name: 'ContactRedux',
     comp: <ContactRedux />,
+  },
+  {
+    name: 'ContactReduxAsync',
+    comp: <ContactReduxAsync />,
   },
 ];
 

@@ -80,7 +80,8 @@ const userReducer2 = (state, action) => {
     };
   }
 
-  if (action.type === ADD_CONTACT) { //Can also react to multiple action type
+  if (action.type === ADD_CONTACT) {
+    //Can also react to multiple action type
     return {...state, ...{prevContact: action.payload}};
   }
 
