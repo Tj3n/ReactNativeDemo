@@ -26,9 +26,6 @@ const thunk = store => next => action => {
 export const store = createStore(persistedReducer, applyMiddleware(thunk));
 export const persistor = persistStore(store);
 
-store.dispatch(addContact({name: 'a name', phone: '1234567890'}));
-store.dispatch(addContact({name: 'b name', phone: '9876543210'}));
-
 // persistor.purge();
 
 // export default () => {

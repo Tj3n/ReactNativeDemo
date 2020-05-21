@@ -1,5 +1,11 @@
 import {combineReducers} from 'redux';
-import {UPDATE_USER, ADD_CONTACT, LOG_IN_SENT, LOG_IN_SUCCESS, LOG_IN_ERROR} from './Actions';
+import {
+  UPDATE_USER,
+  ADD_CONTACT,
+  LOG_IN_SENT,
+  LOG_IN_SUCCESS,
+  LOG_IN_ERROR,
+} from './Actions';
 
 const DEFAULT_STATE = {user: {}, contacts: []};
 
@@ -21,7 +27,7 @@ const userReducer = (state = {}, action) => {
     case LOG_IN_SUCCESS:
       return {...state, ...{token: action.payload}};
     case LOG_IN_ERROR:
-      return {...state, ...{loginErr: action.payload}}
+      return {...state, ...{loginErr: action.payload}};
     default:
       return state;
   }

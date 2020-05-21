@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
 import {View, Button, StyleSheet} from 'react-native';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
-import ContactList from '../comps/ContactList';
-import ContactContext from '../ContactContext';
-// import store from '../redux/Store'
 import {connect} from 'react-redux'; // replace the above import
+
+// import ContactList from '../comps/ContactList';
+import ContactContext from '../ContactContext';
+import FlatListContacts from '../comps/FlatListContacts';
+import ScrollViewContacts from '../comps/ScrollViewContacts';
+
+import {changeFirstContact} from '../redux/Actions';
+
+const ContactList = true ? FlatListContacts : ScrollViewContacts;
 
 class ContactListScreen extends Component {
   static navigationOptions = ({route, navigation}) => ({
@@ -54,6 +60,10 @@ class ContactListScreen extends Component {
     return (
       <View style={styles.container}>
         <Button title="Toggle Contacts" onPress={this.toggleContacts} />
+        <Button
+          title="Change First Contacts"
+          onPress={this.props.changeFirstContact}
+        />
         {/* <Button title="Add Contact" onPress={this.showForm} /> */}
         {this.state.showContacts && ( //If showContacts then return scrollView
           <ContactList
@@ -83,4 +93,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => ({
   contacts: state.contacts,
 });
-export default connect(mapStateToProps)(ContactListScreen);
+export default connect(
+  mapStateToProps,
+  {changeFirstContact},
+)(ContactListScreen);

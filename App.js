@@ -1,38 +1,39 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
-import EmojiDict from './app/3/Emoji';
-import {} from './app/1/ObjectMutation.js';
-import {} from './app/1/Object.js';
-import {} from './app/1/Function.js';
-import {} from './app/2/Async.js';
-import {} from './app/1/Class.js';
-import TodoScreen from './app/3/TodoStyling.js';
-import WorkTimer from './app/4.1/WorkTimer.js';
-import Contacts from './app/4.2/Contacts';
-import ContactsValidated from './app/5/Contacts';
-import ContactsNavigation from './app/6/ContactApp';
-import AppNavigator from './app/6.1/NavigationExample';
-import ContactsViaAPI from './app/7/ContactApp';
-import MapApp from './app/8/MapApp';
-import PickContactApp from './app/8/PickContactApp';
-import CompassApp from './app/8/CompassApp';
-import VideoApp from './app/8/VideoApp';
-import PhotoEditorApp from './app/8/PhotoEditorApp';
+import EmojiDict from './app/3/Emoji'
+import {} from './app/1/ObjectMutation.js'
+import {} from './app/1/Object.js'
+import {} from './app/1/Function.js'
+import {} from './app/2/Async.js'
+import {} from './app/1/Class.js'
+import TodoScreen from './app/3/TodoStyling.js'
+import WorkTimer from './app/4.1/WorkTimer.js'
+import Contacts from './app/4.2/Contacts'
+import ContactsValidated from './app/5/Contacts'
+import ContactsNavigation from './app/6/ContactApp'
+import AppNavigator from './app/6.1/NavigationExample'
+import ContactsViaAPI from './app/7/ContactApp'
+import MapApp from './app/8/MapApp'
+import PickContactApp from './app/8/PickContactApp'
+import CompassApp from './app/8/CompassApp'
+import VideoApp from './app/8/VideoApp'
+import PhotoEditorApp from './app/8/PhotoEditorApp'
 // import {} from './app/9/Redux.js'; //Name conflict
-import ContactRedux from './app/9.1/ContactApp';
-import {} from './app/10/Redux.js';
+import ContactRedux from './app/9.1/ContactApp'
+// import {} from './app/10/Redux.js';
 import ContactReduxAsync from './app/10.1/ContactApp'
+import ContactOptimize from './app/11/ContactApp'
+import PomodroTimer from './app/11.1/App'
 
-import 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {FlatList, ScrollView} from 'react-native-gesture-handler';
-import {Button, StyleSheet} from 'react-native';
+import 'react-native-gesture-handler'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import {ScrollView} from 'react-native-gesture-handler'
+import {Button, StyleSheet} from 'react-native'
+import {Constants} from 'react-native-unimodules'
 
-import {Constants, Asset} from 'react-native-unimodules';
-
-Icon.loadFont();
-Ionicons.loadFont();
+Icon.loadFont()
+Ionicons.loadFont()
 
 const screens = [
   {
@@ -91,27 +92,37 @@ const screens = [
     name: 'ContactReduxAsync',
     comp: <ContactReduxAsync />,
   },
-];
+  {
+    name: 'ContactOptimize',
+    comp: <ContactOptimize />,
+  },
+  {
+    name: 'PomodroTimer',
+    comp: <PomodroTimer />,
+  },
+]
 
 export default class App extends Component {
   state = {
     currentScreen: null,
-  };
+  }
 
   render() {
     return (
       this.state.currentScreen || (
-        <ScrollView style={styles.container}>
-          {screens.map(screen => (
-            <Button
-              key={screen.name}
-              title={screen.name}
-              onPress={() => this.setState({currentScreen: screen.comp})}
-            />
-          ))}
-        </ScrollView>
+        <>
+          <ScrollView style={styles.container}>
+            {screens.map(screen => (
+              <Button
+                key={screen.name}
+                title={screen.name}
+                onPress={() => this.setState({currentScreen: screen.comp})}
+              />
+            ))}
+          </ScrollView>
+        </>
       )
-    );
+    )
 
     // return <TodoScreen />;
     // return <WorkTimer />;
@@ -124,6 +135,7 @@ export default class App extends Component {
     // return <CompassApp />
     // return <VideoApp />
     // return <PhotoEditorApp />
+    // return <ContactReduxAsync />
   }
 }
 
@@ -133,4 +145,4 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1',
   },
-});
+})

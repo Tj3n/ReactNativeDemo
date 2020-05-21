@@ -20,17 +20,6 @@ import {store, persistor} from './redux/Store';
 
 console.log('~~~~ Redux example');
 
-//Contacts
-const contacts = [
-  {name: 'ddf e', phone: '4567', key: 2},
-  {name: 'eef f', phone: '7890', key: 3},
-  {name: 'aac b', phone: '1234', key: 0},
-  {name: 'bbh c', phone: '4321', key: 1},
-];
-
-const compareNames = (lhs, rhs) => lhs.name.localeCompare(rhs.name);
-let key = 4;
-
 //Stack Navigator
 const MainStackNavigator = createStackNavigator();
 
@@ -39,10 +28,10 @@ const TabNavigator = createBottomTabNavigator();
 
 //App
 class ContactApp extends Component {
-  state = {
-    contacts: contacts,
-    isLoggedIn: false,
-  };
+  // state = {
+  //   contacts: contacts,
+  //   isLoggedIn: false,
+  // };
 
   // componentDidMount() {
   //   // fetchUsers().then(results => this.setState({contacts: results}))
@@ -56,17 +45,17 @@ class ContactApp extends Component {
   //   return results;
   // };
 
-  addContact = newContact => {
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, {...newContact, key: key++}],
-    })); //Create new array with added the newContact
-  };
+  // addContact = newContact => {
+  //   this.setState(prevState => ({
+  //     contacts: [...prevState.contacts, {...newContact, key: key++}],
+  //   })); //Create new array with added the newContact
+  // };
 
-  onLoggedIn = () => {
-    this.setState(prevState => ({
-      isLoggedIn: !prevState.isLoggedIn,
-    }));
-  };
+  // onLoggedIn = () => {
+  //   this.setState(prevState => ({
+  //     isLoggedIn: !prevState.isLoggedIn,
+  //   }));
+  // };
 
   //Render with Sections
   render() {
@@ -77,16 +66,11 @@ class ContactApp extends Component {
       // Witch Stacks
 
       //PersistGate Not working for some reason
-      <ContactContext.Provider
-        value={{
-          contacts: this.state.contacts,
-          addContact: this.addContact,
-          refreshContacts: this.getUsers,
-        }}>
+      <ContactContext.Provider>
         <MainStackNavigator.Navigator
           screenOptions={{
             headerShown: true,
-            gestureEnabled: this.state.isLoggedIn,
+            gestureEnabled: this.props.token ? true : false,
           }}
           initialRouteName="ListContact">
           {this.props.token ? (
@@ -111,11 +95,7 @@ class ContactApp extends Component {
               />
             </>
           ) : (
-            <MainStackNavigator.Screen
-              name="Login"
-              component={LoginScreen}
-              initialParams={{onLoggedIn: this.onLoggedIn}}
-            />
+            <MainStackNavigator.Screen name="Login" component={LoginScreen} />
           )}
         </MainStackNavigator.Navigator>
       </ContactContext.Provider>
